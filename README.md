@@ -45,6 +45,8 @@ This project uses the following technologies:
 - `Requests` and `BeautifulSoup` for URL content extraction
 - `python-dotenv` for environment-based configuration
 
+Using SQLite allows data to be stored even after the session is SQLite stores data persistently, so it remains available after the session ends.
+
 ## Architecture
 
 At a high level, the application works like this:
@@ -169,11 +171,6 @@ Then open the local URL shown in the terminal, usually:
 http://localhost:8501
 ```
 
-Important:
-
-- make sure `which python` points to your project `.venv`, not Anaconda or system Python
-- prefer `python -m pip ...` and `python -m streamlit ...` so the same interpreter is used for install and runtime
-- if you renamed the project folder and `.venv` stops activating correctly, recreate the virtual environment so its activation scripts point at the new path
 
 ## How To Use
 
@@ -209,68 +206,14 @@ Use this tab to:
 - view saved timestamps
 - inspect summaries and previews
 
-## How Another User Can Replicate This Project
-
-If someone else wants to reproduce the same project from scratch, they can follow this exact flow:
-
-1. Clone the repository.
-2. Create a Python virtual environment.
-3. Install the Python dependencies from `requirements.txt`.
-4. Install and start Ollama locally.
-5. Pull the required Ollama models.
-6. Create a `.env` file using `.env.example`.
-7. Run `streamlit run app.py`.
-8. Upload a few sample sources such as a PDF, a URL, and some pasted text.
-9. Ask questions and verify that responses include relevant source information.
-
-To reproduce the same behavior reliably, they should use the same:
-
-- Python version
-- Ollama models
-- chunk size and overlap settings
-- FAISS and SQLite paths
-
-## Example Workflow
-
-Here is a simple end-to-end test workflow:
-
-1. Upload a web article.
-2. Upload a PDF bill or report.
-3. Paste a short note as raw text.
-4. Ask: `Summarize everything I uploaded today`.
-5. Ask a more targeted question like: `What is the billing period mentioned in the water bill?`
-6. Check the source list shown under the answer.
-
-## Why SQLite and FAISS Are Both Used
-
-The project intentionally uses both SQLite and FAISS because they solve different problems:
-
-- `SQLite` stores the full source documents and structured metadata
-- `FAISS` stores vector embeddings for semantic similarity search
-
-This hybrid setup is better than using only one of them:
-
-- SQLite is better for filters, metadata, timestamps, and browsing
-- FAISS is better for semantic retrieval across document chunks
-
-## Current Limitations
-
-- URL extraction is basic and may capture noisy page text on some websites
-- PDF extraction quality depends on the structure of the PDF
-- metadata extraction is still lightweight and heuristic-based
-- retrieval quality depends heavily on the local embedding model
-- there is no authentication or multi-user separation yet
 
 ## Ideas For Future Improvements
 
-- add document deletion from the UI
-- add source links directly in the answer panel
 - support OCR for scanned PDFs
 - add reranking for more accurate retrieval
 - add document collections or folders
 - add chat history and session memory
 - support citations with excerpt highlighting
-
 ## Dependencies
 
 Current Python dependencies from [requirements.txt](requirements.txt):
@@ -287,10 +230,4 @@ Current Python dependencies from [requirements.txt](requirements.txt):
 - `langchain-community`
 - `faiss-cpu`
 
-## License
 
-Add the license of your choice here before publishing on GitHub.
-
-## Author Notes
-
-This project is a good example of a practical local RAG application: simple enough to understand end to end, but complete enough to demonstrate document ingestion, metadata storage, vector search, and question answering in one workflow.
