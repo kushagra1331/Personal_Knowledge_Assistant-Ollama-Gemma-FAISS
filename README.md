@@ -1,6 +1,5 @@
-# 🚀 Personal Knowledge Assistant (Local RAG with Gemma 4 + Ollama)
+# 🚀 Personal Knowledge Assistant (Local RAG with Gemma4 (Ollama)+FAISS+SQLite)
 
-![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![LLM](https://img.shields.io/badge/LLM-Gemma%204-orange)
 ![Ollama](https://img.shields.io/badge/Runtime-Ollama-green)
 ![VectorDB](https://img.shields.io/badge/VectorDB-FAISS-red)
