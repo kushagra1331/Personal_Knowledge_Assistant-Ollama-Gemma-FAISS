@@ -4,6 +4,11 @@ Personal Knowledge Assistant is a local Retrieval-Augmented Generation (RAG) app
 
 The project is designed for local-first experimentation. It uses Ollama for local LLM and embedding inference, FAISS for vector similarity search, and SQLite for document storage and metadata. The result is a lightweight personal knowledge assistant that can ingest your own documents and answer questions using the information you saved.
 
+## Demo
+
+![Demo GIF](Assets/demo.gif)
+
+
 ## What This Project Does
 
 With this app, a user can:
