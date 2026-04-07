@@ -1,6 +1,6 @@
-# Knowledge Copilot
+# Personal Knowledge Assistant
 
-Knowledge Copilot is a local Retrieval-Augmented Generation (RAG) application that lets you build a personal knowledge base from URLs, PDFs, and raw text, then ask questions over that data through a Streamlit interface.
+Personal Knowledge Assistant is a local Retrieval-Augmented Generation (RAG) application that lets you build a personal knowledge base from URLs, PDFs, and raw text, then ask questions over that data through a Streamlit interface.
 
 The project is designed for local-first experimentation. It uses Ollama for local LLM and embedding inference, FAISS for vector similarity search, and SQLite for document storage and metadata. The result is a lightweight personal knowledge assistant that can ingest your own documents and answer questions using the information you saved.
 
